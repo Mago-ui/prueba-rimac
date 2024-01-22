@@ -1,4 +1,4 @@
-import LogoRimacHeader from '../../assets/images/logo.png'
+import LogoRimacHeader from '../../assets/images/Logo.png'
 
 function Header(){
     return(
