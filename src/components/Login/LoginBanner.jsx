@@ -1,5 +1,4 @@
 import React from 'react'
-import imagen from '../../assets/logoRIMAC.svg'
 import imagenGirlT from '../../assets/images/Frame.svg'
 import imagenBlur from '../../assets/images/blur-asset.png'
 
