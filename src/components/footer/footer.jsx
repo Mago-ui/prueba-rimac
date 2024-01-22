@@ -1,4 +1,4 @@
-import LogoRimac from "../../assets/images/logo.png";
+import LogoRimac from "../../assets/images/Logo.png";
 
 function Footer() {
   return (
