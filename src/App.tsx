@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "../src/view/Login";
-import PlansCoverage from '../src/view/plans-coverage'
+import PlansCoverage from './view/plansCoverage'
 import Header from "../src/components/header/header";
 import "./App.scss";
 

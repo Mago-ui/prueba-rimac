@@ -18,7 +18,6 @@ function PlansCoverage() {
     );
     let data = await res.json();
     setDataPlan(data);
-    console.log(data);
   };
 
   useEffect(() => {
