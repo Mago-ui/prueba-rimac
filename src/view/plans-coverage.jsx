@@ -1,11 +1,37 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import imagenArrow from "../../src/assets/images/arrow.png";
-import imagenDefense from "../../src/assets/images/defense.svg";
+import Cards from "../components/cards/cards";
+import CardPlan from "../components/cards/cardPlan";
+
 function PlansCoverage() {
   const { state } = useLocation();
   const [value, setValue] = useState(1);
-  
+  const [dataMy, setDataMy] = useState(false);
+  const [dataAny, setDataAny] = useState(false);
+
+  const [dataPlan, setDataPlan] = useState();
+
+  const publicar = async () => {
+    let res = await fetch(
+      "https://rimac-front-end-challenge.netlify.app/api/plans.json"
+    );
+    let data = await res.json();
+    setDataPlan(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    publicar();
+  }, []);
+
+  const dataForMy = (e) => {
+    setDataMy(e);
+  };
+
+  const dataForAny = (e) => {
+    setDataAny(e);
+  };
 
   return (
     <>
@@ -43,12 +69,31 @@ function PlansCoverage() {
               Selecciona la opción que se ajuste más a tus necesidades.
             </span>
           </div>
+          <div className="Card__container">
+            <Cards
+              dataForMy={dataForMy}
+              title={"Para Mí"}
+              text={
+                "Cotiza tu seguro de salud y agrega familiares si así lo deseas."
+              }
+            />
+            <Cards
+              dataForMy={dataForAny}
+              title={"Para alguien más"}
+              text={
+                "Realiza una cotización para uno de tus familiares o cualquier persona."
+              }
+            />
+          </div>
 
-          {/* <div className="Card">
-                <img src={imagenDefense} alt="img-defense" />
-                <p>Para mí</p>
-                <p>Cotiza tu seguro de salud y agrega familiares si así lo deseas.</p>
-            </div> */}
+          {dataMy == true && (
+            <div className="CardPlan__container">
+              {dataPlan.list.map((del, i) => (
+                <CardPlan key={i} data={del} />
+              ))}
+            </div>
+          )}
+          {/* {dataAny == true && <h1>hola2</h1>} */}
         </div>
       ) : (
         <div className="Plans__quote">
@@ -65,18 +110,21 @@ function PlansCoverage() {
           <div className="Plans__card">
             <div>
               <p className="Plans__card--text">Precios calculados para:</p>
-              <p className="Plans__card--textName"> {state.data.name}  {state.data.lastName}</p>
+              <p className="Plans__card--textName">
+                {state.data.name} {state.data.lastName}
+              </p>
             </div>
-            <hr/>
+            <hr />
             <div>
               <p className="Plans__card--textPay">Responsable de pago</p>
-              <p className="Plans__card--date">DNI:  {state.values.dni}</p>
-              <p className="Plans__card--date">Celular:  {state.values.celular}</p>
-           
+              <p className="Plans__card--date">DNI: {state.values.dni}</p>
+              <p className="Plans__card--date">
+                Celular: {state.values.celular}
+              </p>
+
               <p className="Plans__card--textPay">Plan elegido</p>
               <p className="Plans__card--date">Plan en Casa y Clínica</p>
               <p className="Plans__card--date">Costo del Plan: $99 al mes</p>
-
             </div>
           </div>
         </div>

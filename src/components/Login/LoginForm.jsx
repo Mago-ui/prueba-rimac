@@ -78,7 +78,7 @@ function LoginForm() {
                 className="colorError"
               />
 
-              <label className="container">
+              <label className="container" id="c3">
                 <Field type="checkbox" name="toggleOne" />
                 <span className="checkmark"></span>
 
@@ -91,7 +91,7 @@ function LoginForm() {
                 component="div"
                 className="colorError"
               />
-              <label className="container">
+              <label className="container" id="c3">
                 <Field type="checkbox" name="toggleTwo" />
                 <span className="checkmark"></span>
                 <span className="loginForm__data">
