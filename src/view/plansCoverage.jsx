@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import imagenArrow from "../../src/assets/images/arrow.png";
-import Cards from "../components/cards/cards";
+import Cards from "../../src/components/cards/cards";
 import CardPlan from "../components/cards/cardPlan";
 
 function PlansCoverage() {
